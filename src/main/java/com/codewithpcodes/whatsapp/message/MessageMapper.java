@@ -1,5 +1,6 @@
 package com.codewithpcodes.whatsapp.message;
 
+import com.codewithpcodes.whatsapp.file.FileUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,12 +9,12 @@ public class MessageMapper {
         return new MessageResponse(
                 message.getId(),
                 message.getContent(),
-                message.getSenderId(),
-                message.getReceiverId(),
                 message.getType(),
                 message.getState(),
+                message.getSenderId(),
+                message.getReceiverId(),
                 message.getCreatedDate(),
-                //TODO read the media file
-        )
+                FileUtils.readFileFromLocation(message.getMediaFilePath())
+        );
     }
 }

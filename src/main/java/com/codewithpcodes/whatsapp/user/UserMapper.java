@@ -30,4 +30,15 @@ public class UserMapper {
         user.setLastSeen(LocalDateTime.now());
         return user;
     }
+
+    public UserResponse toUserResponse(User user) {
+        return new UserResponse(
+                user.getId(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getEmail(),
+                user.getLastSeen(),
+                user.isUserOnline()
+        );
+    }
 }
