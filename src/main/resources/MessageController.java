@@ -44,6 +44,6 @@ public class MessageController {
     public ResponseEntity<List<MessageResponse>> getMessages(
             @PathVariable("chat-id") String chatId
     ) {
-        return ResponseEntity.ok(messageService.findChatMessages(chatId));
+        return ResponseEntity.ok(messageService.findChatMessages(chatID))
     }
 }
