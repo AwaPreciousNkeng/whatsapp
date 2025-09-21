@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -72,7 +73,7 @@ public class MessageService {
         notificationService.sendNotification(recipientId, notification);
     }
 
-    public void uploadMediaMessage(String chatId, MultipartFile file, Authentication authentication) {
+    public void uploadMediaMessage(String chatId, MultipartFile file, Authentication authentication) throws IOException {
         Chat chat = chatRepository.findById(chatId).orElseThrow(() -> new EntityNotFoundException("Chat with id " + chatId + " not found"));
 
         final String senderId =  getSenderId(chat, authentication);

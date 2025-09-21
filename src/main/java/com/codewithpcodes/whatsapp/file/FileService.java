@@ -24,7 +24,7 @@ public class FileService {
     public String saveFile(
             @NonNull MultipartFile sourceFile,
             @NonNull String userId
-    ) {
+    ) throws IOException {
         final String fileUploadSubPath = "users" + File.separator + userId;
         return uploadFile(sourceFile, fileUploadSubPath);
     }
